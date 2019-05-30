@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AboutComponent, PathNotFoundComponent } from './layout';
+import { AboutComponent, MessagesComponent, PathNotFoundComponent } from './layout';
+import { TaskFormComponent } from './tasks';
 
 const routes: Routes = [
     {
@@ -9,17 +10,24 @@ const routes: Routes = [
         component: AboutComponent
     },
     {
+        path: 'messages',
+        component: MessagesComponent,
+        outlet: 'messages'
+    },
+
+    {
+        path: 'edit/:taskID',
+        component: TaskFormComponent
+    },
+    {
         path: '',
         redirectTo: '/home',
         pathMatch: 'full'
     },
     {
-        // The router will match this route if the URL requested
-        // doesn't match any paths for routes defined in our configuration
         path: '**',
         component: PathNotFoundComponent
     }
-
 ];
 
 @NgModule({
